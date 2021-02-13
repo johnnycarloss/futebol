@@ -7,7 +7,14 @@ trigger:
 - master
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'ubuntu-latest'
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Azure para Estudantes (2dad1575-cf5b-47cc-9dd5-b975cb30ae34)'
+    appType: 'webAppLinux'
+    appName: 'futebolteste'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    runtimeStack: 'NODE|12-lts'
 
 steps:
 - task: NodeTool@0
